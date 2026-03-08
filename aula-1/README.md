@@ -1,4 +1,4 @@
-![](./img/primeiro_projeto.png)
+![](../img/1.png)
 
 ## Instalando Node e Express:
 * No terminal do gitbash, dentro da pasta raiz do projeto,  para instalar o node-js, digite `npm init -y`. Transforma uma pasta comum em um projeto node. (Cria uma pasta package.json com suas dependencias).
