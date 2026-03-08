@@ -93,7 +93,7 @@ app.post("/filmes", (req, res) => {
         id: filmes.length + 1, //tornando mais dinâmico a geração do id
         titulo: req.body.titulo,
         genero: req.body.genero
-    }
+    };
     //adiciona o novo filme no final da lista
     filmes.push(novoFilme);
     res.send(`O filme ${novoFilme.titulo}, foi cadastrado com sucesso!!!`);
