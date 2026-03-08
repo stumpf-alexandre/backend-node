@@ -5,7 +5,7 @@
 * Comando para testar o servidor: "node server.js"
 
 
-![](./img/nodemon.png)
+![](../img/2.png)
 # Nodemon
 ## O que é o nodemon?
 O Nodemon é uma ferramenta que monitora alterações nos arquivos do projeto e reinicia automaticamente a aplicação Node.js.
@@ -33,7 +33,9 @@ alterou → reinicia sozinho
 
 ✔ Evita precisar parar e rodar o servidor manualmente.
 
-(Documentação nodemon)[https://www.npmjs.com/package/nodemon]
+![](../img/nodemon.png)
+
+#### [Documentação nodemon](https://www.npmjs.com/package/nodemon)
 
 
 ## 🛣 Rotas
