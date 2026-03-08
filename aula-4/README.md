@@ -93,3 +93,24 @@ Sem isso:
 ```
 console.log(req.body); // undefined
 ```
+
+# Postman
+É uma plataforma abrangente para o ciclo de vida de APIs, amplamente utilizada por desenvolvedores para projetar, construir, testar, documentar e compartilhar APIs de forma colaborativa. Originalmente conhecido como um cliente HTTP, ele evoluiu para uma ferramenta completa que facilita a comunicação entre cliente e servidor, simulando requisições e visualizando respostas.
+
+## Principais funcionalidades do Postman:
+* ### Envio de Requisições HTTP/API: 
+  Permite testar APIs enviando solicitações como GET, POST, PUT, DELETE, PATCH, entre outras, facilitando a validação antes da integração.
+* ### Gestão de Coleções (Collections): 
+  Organiza requisições relacionadas em pastas, facilitando o compartilhamento com a equipe e o fluxo de trabalho.
+* ### Ambientes (Environments): 
+  Permite configurar variáveis de ambiente (como URLs de desenvolvimento, homologação e produção) para reutilizar requisições em diferentes cenários sem alterar o código manualmente.
+* ### Automação de Testes: 
+  Possui scripts baseados em JavaScript para validar respostas da API, garantindo a qualidade e confiabilidade do software antes do lançamento.
+* ### Documentação Automatizada: 
+  Cria documentações técnicas automaticamente a partir das coleções de requisições, facilitando a compreensão para outros desenvolvedores.
+* ### Simulação de Respostas (Mock Servers): 
+  Permite simular respostas de API (mocking) para desenvolver funcionalidades frontend mesmo quando o backend ainda não está pronto.
+* ### Suporte a Autenticação: 
+  Compatível com diversos métodos de segurança, incluindo OAuth, API Keys, Bearer Tokens e Basic Auth.
+* ### Geração de Código: 
+  Gera trechos de código (snippets) em várias linguagens e bibliotecas, como Python (requests) e Node.js (axios), para acelerar a implementação.
