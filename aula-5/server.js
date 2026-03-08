@@ -13,7 +13,7 @@ app.use(express.json());//Middleware fica entre a requisição e a resposta, ele
 //res sai do servidor
 
 app.get("/", (req, res) => {
-    res.send("API de filmes");
+    res.send("API de filmes e séries");
 });
 
 //criação da porta
@@ -97,4 +97,79 @@ app.post("/filmes", (req, res) => {
     //adiciona o novo filme no final da lista
     filmes.push(novoFilme);
     res.send(`O filme ${novoFilme.titulo}, foi cadastrado com sucesso!!!`);
+});
+
+/******************************************************** */
+
+//BD de séries
+const series = [
+    {
+        id: 1,
+        titulo: "Breaking Bad",
+        genero: "Drama"
+    },
+    {
+        id: 2,
+        titulo: "Greys Anatomy",
+        genero: "Drama"
+    },
+    {
+        id: 3,
+        titulo: "O Mentalista",
+        genero: "Drama/Policial"
+    },
+    {
+        id: 4,
+        titulo: "Friends",
+        genero: "Comédia"
+    },
+    {
+        id: 5,
+        titulo: "Paradise",
+        genero: "Drama"
+    },
+    {
+        id: 6,
+        titulo: "Todo mundo odeia o Chris",
+        genero: "Comédia"
+    },
+    {
+        id: 7,
+        titulo: "Stranger Things",
+        genero: "Ficção Científica"
+    },
+    {
+        id: 8,
+        titulo: "Arcane",
+        genero: "Animação"
+    },
+    {
+        id: 9,
+        titulo: "Game of Thrones",
+        genero: "Fantasia"
+    },
+    {
+        id: 10,
+        titulo: "Sandman",
+        genero: "Fantasia"
+    }
+];
+
+//rota para listar todas as séries
+app.get("/series", (req, res) => {
+    res.send(series);
+});
+
+//rota para postar uma nova série na lista
+app.post("/series", (req, res) => {
+    if(!req.body.titulo || !req.body.genero || req.body.titulo.trim() === "" || req.body.genero.trim() === ""){//verifica se os campos de titulo e genero estão vindo com seus dados ou em branco
+        return res.send("Erro: Os campos titulo e gênero são obrigatórios estarem preenchidos!!!")
+    }
+    const novaSerie = {
+        id: series.length + 1,
+        titulo: req.body.titulo.trim(),
+        genero: req.body.genero.trim()
+    };
+    series.push(novaSerie);
+    res.send(`A série ${novaSerie.titulo}, foi cadastrada com sucesso.`);
 });
