@@ -17,6 +17,7 @@
 * Criando um arquivo digite `touch server.js` e de um espaço e digite `.gitignore`. (cria as pastas server.js e gitignore)
 * Comando para testar o servidor vai trocar de `node server.js"` para `npm run dev`, para fazer o nodemon ficar escutando o servidor caso haja alguma alteração
 
+![](../img/4.png)
 
 # Middleware
 Middleware é uma função que fica entre a requisição (req) e a resposta (res).
