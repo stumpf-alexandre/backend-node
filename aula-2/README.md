@@ -4,6 +4,7 @@
 * Criando um arquivo digite `touch server.js` e de um espaço e digite `.gitignore`. (cria as pastas server.js e gitignore)
 * Comando para testar o servidor: "node server.js"
 
+__________________________________________________________________
 
 ![](../img/2.png)
 # Nodemon
@@ -37,6 +38,66 @@ alterou → reinicia sozinho
 
 #### [Documentação nodemon](https://www.npmjs.com/package/nodemon)
 
+__________________________________________________________________
+
+# Node vs Nodemon
+Node executa. Nodemon monitora e reinicia.
+
+### 🔄 Rodando o servidor com Node
+
+`node server.js`
+
+📌 O que acontece?
+
+* O servidor inicia normalmente
+
+* Se você alterar o código…
+
+* Precisa parar (CTRL + C)
+
+* Rodar novamente
+
+#### 🧠 Fluxo visual:
+
+`alterou código`
+↓
+`CTRL + C`
+↓
+`node server.js`
+
+❌ Processo manual
+❌ Interrompe o fluxo
+❌ Mais lento no desenvolvimento
+
+### 🔄 Rodando o servidor com Nodemon
+
+`npx nodemon server.js`
+
+📌 O que acontece?
+
+* O servidor inicia normalmente
+
+* Sempre que você salva o arquivo…
+
+* Ele reinicia automaticamente
+
+#### 🧠 Fluxo visual:
+
+`alterou código`
+↓
+`salvou`
+↓
+`reinicia sozinho 🚀`
+
+✔ Processo automático
+✔ Mais rápido
+✔ Ideal para desenvolvimento
+
+📊 Comparação Final
+node-----------------------------nodemon
+Manual--------------------------Automático
+Precisa reiniciar--------------Reinicia sozinho
+Produção----------------------Desenvolvimento
 
 ## 🛣 Rotas
 Rotas são os caminhos que o cliente pode acessar dentro do servidor.
