@@ -17,6 +17,8 @@
 * Criando um arquivo digite `touch server.js` e de um espaço e digite `.gitignore`. (cria as pastas server.js e gitignore)
 * Comando para testar o servidor vai trocar de `node server.js"` para `npm run dev`, para fazer o nodemon ficar escutando o servidor caso haja alguma alteração
 
+__________________________________________________________________
+
 # Iniciando API de Filmes | Continuação Rotas | Verbo GET e POST
 
 ![](../img/3.jpg)
