@@ -1,27 +1,24 @@
 //Importações
 const express = require('express'); //framework que cria o servidor e as rotas
 const {criarBanco} = require('./database'); //a chave que vai abrir a conexão com o banco de dados
+const cors = require('cors'); //importando o pacote que gerencia as permições de acesso
 
 const app = express(); //inicialização: ligando o motor do servidor
+app.use(cors()); //ativando o cors no servidor
+
 app.use(express.json()); //tradutor: configura o express para entender dados no formato JSON
-const PORT = 3000;
 
 //criando a rota principal '/', rota raiz
 app.get('/', (req, res) => {
     res.send(`
-            <body>
-                <h1>Zela Cidade</h1>
-                <h2>Gestão de Problemas Urbanos</h2>
-                <p>Endpoint que leva aos incidentes cadastrados: <a href="http://localhost:3000/incidentes">/incidentes</a></p>
-                <p>Endpoint que leva aos incidentes cadastrados: <a href="http://localhost:3000/incidentes/4">/incidentes especificos</a></p>
-            </body>
-        `); //envia uma resposta simples(texto, html, json)
+        <body>
+            <h1>Zela Cidade</h1>
+            <h2>Gestão de Problemas Urbanos</h2>
+            <p>Endpoint que leva aos incidentes cadastrados: <a href="http://localhost:${PORT}/incidentes">/incidentes</a></p>
+            <p>Endpoint que leva aos incidentes cadastrados: <a href="http://localhost:${PORT}/incidentes/4">/incidentes especificos</a></p>
+        </body>
+    `); //envia uma resposta simples(texto, html, json)
 
-});
-
-//ligando o servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
 
 //rota de listagem - para buscar todos os problemas registrados
@@ -36,8 +33,8 @@ app.get('/incidentes/:id', async (req, res) => {
     const { id } = req.params;
     const db = await criarBanco();
     const incidenteEspecifico = await db.all(`
-            SELECT * FROM incidentes WHERE id = ?
-        `, [id]);
+         SELECT * FROM incidentes WHERE id = ?
+    `, [id]);
         //o ? é um espaço reservado que será preenchido pelo valor da variavel [id]
         //o ? SQL Injection é usado para segurança
 
@@ -52,8 +49,8 @@ app.post('/incidentes', async (req, res) => {
 
     //o run executa alguma coisa
     await db.run(`
-            INSERT INTO incidentes(tipo_problema, localizacao, descricao, prioridade, nome_solicitante, data_registro, hora_registro) VALUES (?, ?, ?, ?, ?, ?, ?)
-        `, [tipo_problema, localizacao, descricao, prioridade, nome_solicitante, data_registro, hora_registro]);
+        INSERT INTO incidentes(tipo_problema, localizacao, descricao, prioridade, nome_solicitante, data_registro, hora_registro) VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [tipo_problema, localizacao, descricao, prioridade, nome_solicitante, data_registro, hora_registro]);
 
     //envia uma resposta de confirmação para o cliente que fez z requisição
     res.send(`Incidente novo: ${tipo_problema}, registrado na data ${data_registro} por ${nome_solicitante}`);
@@ -71,10 +68,10 @@ app.put('/incidentes/:id', async (req, res) => {
     const db = await criarBanco();
 
     await db.run(`
-            UPDATE incidentes 
-            SET descricao = ?, prioridade = ?, status_resolucao = ? 
-            WHERE id = ?
-        `, [descricao, prioridade, status_resolucao, id]);
+        UPDATE incidentes 
+        SET descricao = ?, prioridade = ?, status_resolucao = ? 
+        WHERE id = ?
+    `, [descricao, prioridade, status_resolucao, id]);
     //Enviar uma resposta para o cliente
     res.send(`O incidente de id ${id} foi atualizada com sucesso`);
 });
@@ -88,7 +85,15 @@ app.delete('/incidentes/:id', async (req, res) => {
     const db = await criarBanco();
 
     await db.run(`
-            DELETE FROM incidentes WHERE id = ?
-        `, [id]);
+        DELETE FROM incidentes WHERE id = ?
+    `, [id]);
     res.send(`O incidente de id ${id} foi removido com sucesso`);
+});
+
+//criando uma variavel inteligente para a porta
+const PORT = process.env.PORT || 3000;
+
+//ligando o servidor
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
